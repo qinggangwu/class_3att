@@ -1,0 +1,69 @@
+MODEL:
+  PRETRAIN_CHOICE: 'imagenet'
+  NAME: 'resnet18'
+  #NAME: 'resnet50'
+  PRETRAIN_PATH: '../modeling/resnet18-5c106cde.pth'
+  #PRETRAIN_PATH: '/data/models/pytorch/pretrained/resnet50-19c8e357.pth'
+  METRIC_LOSS_TYPE: 'triplet_center'
+  IF_LABELSMOOTH: 'on'
+  IF_WITH_CENTER: 'yes'
+
+
+  DROPOUT: 0.5  # dropout 系数，不加写0即可
+  nc1: 19     # 第一个检测头的分类数量
+  nc2: 6      # 第二个检测头分类数量
+  nc3: 11     # 第三个检测头分类数量
+  loss_weight: [0.6,0.2,0.2]  # 损失函数占比
+
+
+
+
+INPUT:
+  SIZE_TRAIN: [224, 224]
+  SIZE_TEST: [224, 224]
+  PROB: 0.5 # random horizontal flip
+  RE_PROB: 0.5 # random erasing
+  ROTATE_PROB: 0.5
+  COLORJETTER_PROB: 0.5
+  BLUR_PROB: 0.5
+  PADDING: 10
+
+DATASETS:
+  ROOT_DIR: '/media/wqg/3e165c12-9862-4867-b333-fbf93befd928/home/wqg/data/maxvision_data/middle_east/car_att/det/'
+  TRAIN_TXT_PATH: '/media/wqg/3e165c12-9862-4867-b333-fbf93befd928/home/wqg/已整理数据/车牌字符数据/中东数据/国家分类数据/middle_att3_0419/train.txt'
+  VAL_TXT_PATH: '/media/wqg/3e165c12-9862-4867-b333-fbf93befd928/home/wqg/已整理数据/车牌字符数据/中东数据/国家分类数据/middle_att3_0419/val.txt'
+
+DATALOADER:
+  SAMPLER: 'softmax_triplet'
+  IMG_TYPE : 'cv'
+  NUM_WORKERS: 4
+
+SOLVER:
+  OPTIMIZER_NAME: 'Adam'
+  MAX_EPOCHS: 120
+  BASE_LR: 0.00035
+  
+  BIAS_LR_FACTOR: 1
+  WEIGHT_DECAY: 0.0005
+  WEIGHT_DECAY_BIAS: 0.0005
+  IMS_PER_BATCH: 64
+
+  STEPS: [40, 70]
+  GAMMA: 0.1
+
+  WARMUP_FACTOR: 0.01
+  WARMUP_ITERS: 10
+  WARMUP_METHOD: 'linear'
+
+  CHECKPOINT_PERIOD: 10   # 间隔多少epoch 进行保存模型。
+  LOG_PERIOD: 10
+  EVAL_PERIOD: 10
+
+TEST:
+  IMS_PER_BATCH: 64
+  WEIGHT: "/media/wqg/3e165c12-9862-4867-b333-fbf93befd928/home/wqg/model/中东项目/middle_plate_att_0420.pth"
+  SAVE_DIR: '../output/suitcase/test_res'
+
+OUTPUT_DIR: "../output/middle_3att"
+
+

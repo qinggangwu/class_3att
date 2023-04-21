@@ -1,0 +1,52 @@
+{
+  "country": [
+    "0_Yemen",
+    "1_Turkey",
+    "2_Syria",
+    "3_Lebanon",
+    "4_Jordan",
+    "5_Iraq",
+    "6_Egypt",
+    "7_Umm_Al_Quwain",
+    "8_Sharjah",
+    "9_Ras_Al_Khaimah",
+    "10_Fujairah",
+    "11_Dubai",
+    "12_Ajman",
+    "13_Abu_Dhabi",
+    "14_Saudi_Arabia",
+    "15_Qatar",
+    "16_Oman",
+    "17_Kuwait",
+    "18_Bahrain"
+    ],
+
+  "color_num": [
+    "0_black",
+    "1_blue",
+    "2_green",
+    "3_red",
+    "4_white",
+    "5_yellow"
+  ],
+
+  "color_BT": [
+    "0_black",
+    "1_blue",
+    "2_green",
+    "3_red",
+    "4_white",
+    "5_yellow",
+    "6_gray",
+    "7_beige",
+    "8_purple",
+    "9_orange",
+    "10_brown",
+    "9_Orange",
+    "7_Beige",
+     "6_grey",
+     "4_write"
+
+
+  ]
+}
